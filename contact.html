@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | 株式会社松橋興業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@400;600;700&family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d2b52;--blue:#1565c0;--sky:#29b6f6;--aqua:#4dd0e1;--white:#ffffff;--light:#e3f2fd;--gray:#f5f9ff;--text:#1a2a3a;--muted:#5a7a9a;--teal:#00838f;--gold:#f0a500;--header-h:72px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--header-h);background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--sky);display:flex;align-items:center;padding:0 24px;box-shadow:0 2px 20px rgba(21,101,192,0.12)}
+.hd-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.hd-logo-mark{width:42px;height:42px;background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 60%,var(--sky) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-family:'Kaisei Decol',serif;font-size:18px;font-weight:700}
+.hd-logo-text .en{font-family:'Oswald',sans-serif;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.hd-logo-text .ja{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--navy)}
+nav{flex:1;display:flex;justify-content:center;gap:4px}
+nav a{text-decoration:none;color:var(--navy);font-size:13px;font-weight:500;padding:6px 14px;border-radius:4px;transition:all 0.2s;white-space:nowrap}
+nav a:hover{background:var(--light);color:var(--blue)}
+nav a.current{color:var(--blue);font-weight:700}
+.hd-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.hd-tel{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;color:var(--navy);text-decoration:none;letter-spacing:1px}
+.hd-tel span{font-size:11px;font-family:'Noto Sans JP',sans-serif;display:block;color:var(--muted);text-align:center;letter-spacing:0;font-weight:400}
+.btn-cta{background:linear-gradient(135deg,var(--sky),var(--blue));color:white;text-decoration:none;padding:10px 18px;border-radius:6px;font-size:13px;font-weight:700;white-space:nowrap;transition:all 0.2s}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all 0.3s;display:block}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.sp-menu{display:none;position:fixed;top:var(--header-h);left:0;right:0;background:white;z-index:999;border-bottom:2px solid var(--sky);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+.sp-menu.open{display:block}
+.sp-menu a{display:block;padding:14px 24px;text-decoration:none;color:var(--navy);font-weight:500;border-bottom:1px solid var(--light);font-size:15px}
+.sp-menu .sp-tel{padding:16px 24px;font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--navy)}
+.page-hero{margin-top:var(--header-h);background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 70%,var(--teal) 100%);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.page-hero-en{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:4px;color:var(--sky);margin-bottom:12px;text-transform:uppercase}
+.page-hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(28px,5vw,48px);font-weight:900;color:white;margin-bottom:12px}
+.page-hero p{color:rgba(255,255,255,0.75);font-size:15px;max-width:500px;margin:0 auto}
+.breadcrumb{display:flex;justify-content:center;gap:8px;margin-top:20px;font-size:12px;color:rgba(255,255,255,0.5)}
+.breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+/* CONTACT INFO */
+.contact-info{padding:60px 0;background:var(--gray)}
+.contact-info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.contact-card{background:white;border-radius:16px;padding:36px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.07);transition:transform 0.3s}
+.contact-card:hover{transform:translateY(-4px)}
+.contact-card .icon{font-size:48px;margin-bottom:16px}
+.contact-card h3{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.contact-card p{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.7}
+.tel-big{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:var(--navy);text-decoration:none;display:block;letter-spacing:2px;transition:color 0.2s}
+.tel-big:hover{color:var(--blue)}
+.tel-note{font-size:12px;color:var(--muted);margin-top:6px}
+.mail-badge{display:inline-block;background:linear-gradient(135deg,var(--sky),var(--blue));color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s}
+.mail-badge:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(21,101,192,0.3)}
+/* FORM */
+.form-sec{padding:80px 0;background:white}
+.sec-label{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:4px;color:var(--sky);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.sec-label::before{content:'';flex:1;height:1px;background:var(--sky);max-width:40px}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(24px,3.5vw,36px);font-weight:900;color:var(--navy);margin-bottom:8px}
+.sec-sub{color:var(--muted);font-size:14px;margin-bottom:40px;line-height:1.7}
+.form-wrap{max-width:720px}
+.form-group{margin-bottom:24px}
+.form-label{display:block;font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.form-label .req{background:var(--blue);color:white;font-size:10px;padding:2px 8px;border-radius:4px;margin-left:8px;font-weight:700;vertical-align:middle}
+.form-label .opt{background:var(--muted);color:white;font-size:10px;padding:2px 8px;border-radius:4px;margin-left:8px;font-weight:400;vertical-align:middle}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:14px 16px;border:2px solid var(--light);border-radius:8px;
+  font-size:15px;font-family:'Noto Sans JP',sans-serif;color:var(--text);
+  background:white;transition:border-color 0.2s,box-shadow 0.2s;outline:none
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(41,182,246,0.15)}
+.form-textarea{height:160px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-submit{background:linear-gradient(135deg,var(--sky),var(--blue));color:white;border:none;padding:16px 48px;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;transition:all 0.3s;box-shadow:0 4px 20px rgba(21,101,192,0.3)}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(21,101,192,0.4)}
+.form-note{font-size:12px;color:var(--muted);margin-top:16px;line-height:1.8}
+/* TYPES */
+.type-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.type-btn{position:relative}
+.type-btn input[type="radio"]{position:absolute;opacity:0;width:0}
+.type-btn label{display:block;padding:8px 18px;border:2px solid var(--light);border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;color:var(--navy)}
+.type-btn input:checked + label{background:var(--blue);border-color:var(--blue);color:white}
+.type-btn label:hover{border-color:var(--sky)}
+footer{background:var(--navy);color:rgba(255,255,255,0.75);padding:60px 0 0}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;max-width:1100px;margin:0 auto;padding:0 24px 48px}
+.foot-logo{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:white;margin-bottom:16px}
+.foot-en{font-family:'Oswald',sans-serif;font-size:11px;color:var(--sky);letter-spacing:2px;margin-bottom:12px}
+.foot-info{font-size:13px;line-height:2}
+.foot-info a{color:rgba(255,255,255,0.75);text-decoration:none}
+.foot-h{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:2px;color:var(--sky);text-transform:uppercase;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.foot-links{display:flex;flex-direction:column;gap:10px}
+.foot-links a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;transition:color 0.2s;display:flex;align-items:center;gap:6px}
+.foot-links a:hover{color:var(--sky)}
+.foot-links a::before{content:'›';color:var(--sky)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,0.1);padding:16px 24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4)}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fd1{transition-delay:0.1s}.fd2{transition-delay:0.2s}
+@media(max-width:900px){nav,.hd-tel{display:none}.hamburger{display:flex}.hd-right .btn-cta{display:none}.contact-info-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr;gap:32px}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <a class="hd-logo" href="index.html">
+    <div class="hd-logo-mark">松</div>
+    <div class="hd-logo-text">
+      <div class="en">MATSUHASHI KOGYO</div>
+      <div class="ja">株式会社松橋興業</div>
+    </div>
+  </a>
+  <nav>
+    <a href="index.html">ホーム</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a>
+    <a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html" class="current">お問い合わせ</a>
+  </nav>
+  <div class="hd-right">
+    <a class="hd-tel" href="tel:0489934503"><span>お気軽にお電話ください</span>048-993-4503</a>
+    <a class="btn-cta" href="recruit.html">採用情報を見る</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</header>
+<div class="sp-menu" id="spMenu">
+  <a href="index.html">ホーム</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a>
+  <a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a>
+  <div class="sp-tel">📞 048-993-4503</div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-en">CONTACT</div>
+  <h1>お問い合わせ</h1>
+  <p>採用・施工のご相談、何でもお気軽にどうぞ。見学だけでもOKです！</p>
+  <div class="breadcrumb"><a href="index.html">ホーム</a><span>›</span><span>お問い合わせ</span></div>
+</div>
+
+<!-- CONTACT INFO -->
+<div class="contact-info">
+  <div class="container">
+    <div class="contact-info-grid">
+      <div class="contact-card fade-up">
+        <div class="icon">📞</div>
+        <h3>お電話でのお問い合わせ</h3>
+        <p>採用のご相談・施工のご依頼はお電話が一番スムーズです。担当：立石が対応いたします。</p>
+        <a class="tel-big" href="tel:0489934503">048-993-4503</a>
+        <div class="tel-note">受付時間：8:00〜17:00（日曜・祝日除く）</div>
+      </div>
+      <div class="contact-card fade-up fd1">
+        <div class="icon">✉️</div>
+        <h3>フォームでのお問い合わせ</h3>
+        <p>24時間受付中。採用エントリー・施工依頼・見学希望など、お気軽にご送信ください。2営業日以内にご返答します。</p>
+        <a class="mail-badge" href="#form">📝 お問い合わせフォームへ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM -->
+<section class="form-sec" id="form">
+  <div class="container">
+    <div class="sec-label fade-up">CONTACT FORM</div>
+    <h2 class="sec-title fade-up">お問い合わせフォーム</h2>
+    <p class="sec-sub fade-up">採用エントリー・施工のご相談・見学希望など、お気軽にご連絡ください。<br>2営業日以内にご返答いたします。</p>
+    <div class="form-wrap fade-up">
+      <form action="#" method="post">
+        <!-- お問い合わせ種別 -->
+        <div class="form-group">
+          <label class="form-label">お問い合わせ種別<span class="req">必須</span></label>
+          <div class="type-btns">
+            <div class="type-btn"><input type="radio" id="type1" name="type" value="採用エントリー" checked><label for="type1">採用エントリー</label></div>
+            <div class="type-btn"><input type="radio" id="type2" name="type" value="見学希望"><label for="type2">見学希望</label></div>
+            <div class="type-btn"><input type="radio" id="type3" name="type" value="施工のご相談"><label for="type3">施工のご相談</label></div>
+            <div class="type-btn"><input type="radio" id="type4" name="type" value="その他"><label for="type4">その他</label></div>
+          </div>
+        </div>
+        <!-- 名前 -->
+        <div class="form-group">
+          <label class="form-label" for="name">お名前<span class="req">必須</span></label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="例）山田 太郎" required>
+        </div>
+        <!-- 電話・メール -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="tel">電話番号<span class="req">必須</span></label>
+            <input class="form-input" type="tel" id="tel" name="tel" placeholder="例）090-1234-5678" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">メールアドレス<span class="opt">任意</span></label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="例）info@example.com">
+          </div>
+        </div>
+        <!-- 年齢・経験 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="age">年齢<span class="opt">任意</span></label>
+            <select class="form-select" id="age" name="age">
+              <option value="">選択してください</option>
+              <option>10代</option><option>20代</option><option>30代</option><option>40代以上</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="exp">経験<span class="opt">任意</span></label>
+            <select class="form-select" id="exp" name="exp">
+              <option value="">選択してください</option>
+              <option>未経験</option><option>1年未満</option><option>1〜3年</option><option>3〜5年</option><option>5年以上</option>
+            </select>
+          </div>
+        </div>
+        <!-- メッセージ -->
+        <div class="form-group">
+          <label class="form-label" for="message">メッセージ<span class="opt">任意</span></label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="ご質問・ご相談内容をご自由にお書きください。「見学したい」「詳しく話を聞きたい」でもOKです！"></textarea>
+        </div>
+        <button class="form-submit" type="submit">📨 送信する</button>
+        <p class="form-note">
+          ※ 入力いただいた個人情報は、お問い合わせへの対応・採用選考のみに使用し、第三者への提供は行いません。<br>
+          ※ 2営業日以内にお電話またはメールにてご連絡いたします。
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-en">MATSUHASHI KOGYO CO., LTD.</div>
+      <div class="foot-logo">株式会社松橋興業</div>
+      <div class="foot-info">〒343-0851 埼玉県越谷市七左町６丁目２２２番地１<br><a href="tel:0489934503">TEL：048-993-4503</a><br>代表取締役：立石 慎二<br>営業時間：8:00〜17:00（日祝定休）<br>埼玉県知事許可（般-6）第77323号</div>
+    </div>
+    <div>
+      <div class="foot-h">SERVICES</div>
+      <div class="foot-links"><a href="service.html">鋼管杭工事</a><a href="service.html">地盤改良工事</a><a href="service.html">重機オペレーション</a><a href="service.html">溶接・付帯工事</a></div>
+    </div>
+    <div>
+      <div class="foot-h">PAGES</div>
+      <div class="foot-links"><a href="index.html">ホーム</a><a href="works.html">施工実績</a><a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a></div>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2025 株式会社松橋興業 All Rights Reserved.</div>
+</footer>
+<script>
+const ham=document.getElementById('hamburger'),menu=document.getElementById('spMenu');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');menu.classList.toggle('open')});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
